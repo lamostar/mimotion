@@ -51,10 +51,10 @@ def get_incremental_step(user_key):
     increment = int(elapsed * avg_per_min * random.uniform(0.6, 1.4))
     increment = max(increment, random.randint(50, 200))
 
-    new_step = min(last_step + increment, max_step)
+    new_step = min(last_step + increment, daily_target)
 
-    if now.hour >= 22 and last_step > 0:
-        new_step = min(last_step + random.randint(10, 100), max_step)
+    if now.hour >= 22 and last_step > 0 and last_step < daily_target:
+        new_step = min(last_step + random.randint(10, 100), daily_target)
 
     user_tokens[step_key] = {
         "date": today_str,
