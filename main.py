@@ -48,8 +48,8 @@ def get_incremental_step(user_key):
     active_minutes = 16 * 60
     avg_per_min = daily_target / active_minutes
 
-    increment = int(elapsed * avg_per_min * random.uniform(0.6, 1.4))
-    increment = max(increment, random.randint(50, 200))
+    increment = int(elapsed * avg_per_min * random.uniform(1.0, 1.6))
+    increment = max(increment, random.randint(120, 260))
 
     new_step = min(last_step + increment, daily_target)
 
